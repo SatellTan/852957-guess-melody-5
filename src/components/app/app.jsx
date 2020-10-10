@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import WelcomeScreen from "../welcome-screen/welcome-screen";
 import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen";
@@ -8,6 +7,7 @@ import AuthScreen from "../auth-screen/auth-screen";
 import GameOverScreen from "../game-over-screen/game-over-screen";
 import WinScreen from "../win-screen/win-screen";
 import GameScreen from "../game-screen/game-screen";
+import {questionsType, errorsCountType} from '../../types';
 
 
 const App = (props) => {
@@ -59,9 +59,8 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  errorsCount: PropTypes.number.isRequired,
-  questions: PropTypes.array.isRequired,
+  questions: questionsType.isRequired,
+  errorsCount: errorsCountType,
 };
-
 
 export default App;

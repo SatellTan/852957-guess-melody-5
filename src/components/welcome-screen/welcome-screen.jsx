@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import {onPlayButtonClickType, errorsCountType} from '../../types';
 
 const WelcomeScreen = (props) => {
   const {errorsCount, onPlayButtonClick} = props;
@@ -29,9 +29,8 @@ const WelcomeScreen = (props) => {
 };
 
 WelcomeScreen.propTypes = {
-  errorsCount: PropTypes.number.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
+  errorsCount: errorsCountType,
+  onPlayButtonClick: onPlayButtonClickType,
 };
-
 
 export default WelcomeScreen;

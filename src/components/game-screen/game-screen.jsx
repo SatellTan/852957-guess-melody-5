@@ -1,9 +1,9 @@
 import React, {PureComponent} from "react";
-import PropTypes from 'prop-types';
 import {Redirect} from 'react-router-dom';
 import {GameType} from '../../const';
 import ArtistQuestionScreen from '../artist-question-screen/artist-question-screen';
 import GenreQuestionScreen from '../genre-question-screen/genre-question-screen';
+import {questionsType} from '../../types';
 
 class GameScreen extends PureComponent {
   constructor(props) {
@@ -55,7 +55,7 @@ class GameScreen extends PureComponent {
 }
 
 GameScreen.propTypes = {
-  questions: PropTypes.array.isRequired,
+  questions: questionsType,
 };
 
 export default GameScreen;
