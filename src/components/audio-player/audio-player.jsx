@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 export default class AudioPlayer extends PureComponent {
   constructor(props) {
     super(props);
+
     this._audioRef = createRef();
 
     this.state = {
@@ -15,7 +16,7 @@ export default class AudioPlayer extends PureComponent {
   componentDidMount() {
     const {src} = this.props;
     const audio = this._audioRef.current;
-    //console.log(audio);
+
     audio.src = src;
 
     audio.oncanplaythrough = () => this.setState({
@@ -52,6 +53,8 @@ export default class AudioPlayer extends PureComponent {
   }
 
   componentDidUpdate() {
+    const audio = this._audioRef.current;
+
     if (this.props.isPlaying) {
       audio.play();
     } else {
