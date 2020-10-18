@@ -1,18 +1,15 @@
 import React from "react";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
+import PropTypes from "prop-types";
 import WelcomeScreen from "../welcome-screen/welcome-screen";
-import ArtistQuestionScreen from "../artist-question-screen/artist-question-screen";
-import GenreQuestionScreen from "../genre-question-screen/genre-question-screen";
 import AuthScreen from "../auth-screen/auth-screen";
 import GameOverScreen from "../game-over-screen/game-over-screen";
 import WinScreen from "../win-screen/win-screen";
 import GameScreen from "../game-screen/game-screen";
-import {questionsType, errorsCountType} from '../../types';
-
+import {questionsType} from '../../types';
 
 const App = (props) => {
   const {errorsCount, questions} = props;
-  const [firstQuestion, secondQuestion] = questions;
 
   return (
     <BrowserRouter>
@@ -26,18 +23,6 @@ const App = (props) => {
             />
           )}
         />
-        <Route exact path="/dev-artist">
-          <ArtistQuestionScreen
-            question={secondQuestion}
-            onAnswer={() => {}}
-          />
-        </Route>
-        <Route exact path="/dev-genre">
-          <GenreQuestionScreen
-            question={firstQuestion}
-            onAnswer={() => {}}
-          />
-        </Route>
         <Route exact path="/login">
           <AuthScreen />
         </Route>
@@ -60,7 +45,7 @@ const App = (props) => {
 
 App.propTypes = {
   questions: questionsType.isRequired,
-  errorsCount: errorsCountType,
+  errorsCount: PropTypes.number.isRequired,
 };
 
 export default App;
