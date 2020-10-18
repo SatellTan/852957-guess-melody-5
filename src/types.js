@@ -23,9 +23,3 @@ export const artistQuestionType = PropTypes.shape({
 });
 
 export const questionsType = PropTypes.arrayOf(PropTypes.oneOfType([genreQuestionType, artistQuestionType]));
-
-export const errorsCountType = PropTypes.number.isRequired;
-
-export const onPlayButtonClickType = PropTypes.func.isRequired;
-
-export const onAnswerType = PropTypes.func.isRequired;

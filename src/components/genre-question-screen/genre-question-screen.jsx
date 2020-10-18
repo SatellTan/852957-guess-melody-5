@@ -1,18 +1,21 @@
 import React, {PureComponent} from "react";
-import {onAnswerType, genreQuestionType} from '../../types';
+import PropTypes from "prop-types";
+import {genreQuestionType} from '../../types';
+import AudioPlayer from "../audio-player/audio-player";
 
 class GenreQuestionScreen extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
+      activePlayer: 0,
       answers: [false, false, false, false],
     };
   }
 
   render() {
     const {onAnswer, question} = this.props;
-    const {answers: userAnswers} = this.state;
+    const {answers: userAnswers, activePlayer} = this.state;
     const {
       answers,
       genre,
@@ -49,12 +52,15 @@ class GenreQuestionScreen extends PureComponent {
           >
             {answers.map((answer, i) => (
               <div key={`${i}-${answer.src}`} className="track">
-                <button className="track__button track__button--play" type="button"/>
-                <div className="track__status">
-                  <audio
-                    src={answer.src}
-                  />
-                </div>
+                <AudioPlayer
+                  onPlayButtonClick={() => {
+                    this.setState({
+                      activePlayer: activePlayer === i ? -1 : i,
+                    });
+                  }}
+                  isPlaying={i === activePlayer}
+                  src={answer.src}
+                />
                 <div className="game__answer">
                   <input className="game__input visually-hidden" type="checkbox" name="answer" value={`answer-${i}`}
                     id={`answer-${i}`}
@@ -81,7 +87,7 @@ class GenreQuestionScreen extends PureComponent {
 }
 
 GenreQuestionScreen.propTypes = {
-  onAnswer: onAnswerType,
+  onAnswer: PropTypes.func.isRequired,
   question: genreQuestionType,
 };
 
