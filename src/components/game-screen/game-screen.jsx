@@ -41,16 +41,16 @@ const GameScreen = (props) => {
         >
           <Mistakes count={mistakes}/>
         </ArtistQuestionScreenWrapped>
-    );
-  case GameType.GENRE:
-    return (
-      <GenreQuestionScreenWrapped
-        question={question}
-        onAnswer={onUserAnswer}
-      >
-        <Mistakes count={mistakes} />
-      </GenreQuestionScreenWrapped>
-    );
+      );
+    case GameType.GENRE:
+      return (
+        <GenreQuestionScreenWrapped
+          question={question}
+          onAnswer={onUserAnswer}
+        >
+          <Mistakes count={mistakes} />
+        </GenreQuestionScreenWrapped>
+      );
   }
 
   return <Redirect to="/" />;
