@@ -57,7 +57,7 @@ const GameScreen = (props) => {
 };
 
 GameScreen.propTypes = {
-  questions: questionsType,
+  questions: questionsType.isRequired,
   step: PropTypes.number.isRequired,
   resetGame: PropTypes.func.isRequired,
   onUserAnswer: PropTypes.func.isRequired,
@@ -67,6 +67,7 @@ GameScreen.propTypes = {
 const mapStateToProps = (state) => ({
   step: state.step,
   mistakes: state.mistakes,
+  questions: state.questions,
 });
 
 const mapDispatchToProps = (dispatch) => ({
