@@ -45,13 +45,13 @@ const GenreQuestionScreen = (props) => {
         >
           {answers.map((answer, i) => (
             <GenreQuestionItem
-            answer={answer}
-            id={i}
-            key={`${i}-${answer.src}`}
-            onChange={onChange}
-            renderPlayer={renderPlayer}
-            userAnswer={userAnswers[i]}
-          />
+              answer={answer}
+              id={i}
+              key={`${i}-${answer.src}`}
+              onChange={onChange}
+              renderPlayer={renderPlayer}
+              userAnswer={userAnswers[i]}
+            />
           ))}
 
           <button className="game__submit button" type="submit">Ответить</button>
